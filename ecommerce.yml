@@ -1,5 +1,5 @@
 token:
-  secret-key: "token secret value abcdefghijklmn 1234567890 asfunvsaoiuf123214fdaslmdsajlkdvf"
+  secret-key: "token secret value abcdefgh 1234567890 abcdefgh 1234567890 abcdefgh 1234567890"
   expiration-duration-time: 86400000
 
 gateway.ip: 172.30.1.66
