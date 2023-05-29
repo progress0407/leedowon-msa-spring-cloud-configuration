@@ -1,5 +1,4 @@
 token:
-  # test edited messgge (odd) 
   secret-key: "[default] test edited (even) token secret value abcdefgh 1234567890 abcdefgh 1234567890 abcdefgh 1234567890"
   expiration-duration-time: 86400000
 

@@ -1,0 +1,3 @@
+token:
+  secret-key: "[default] user service edited (even) token secret value abcdefgh 1234567890 abcdefgh 1234567890 abcdefgh 1234567890"
+  expiration-duration-time: 86400000

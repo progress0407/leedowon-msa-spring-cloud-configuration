@@ -1,0 +1,85 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: "Spring Cloud Gateway GlobalFilter"
+            preLogger: true
+            postLogger: true
+      routes:
+
+        ## User Service 회원 가입
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+
+        ## User Service 로그인
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+
+        ## User Service 조회
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+            - AuthorizationHeaderFilter
+
+        ## User Service Actuator
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*),/$\{segment}
+            - AuthorizationHeaderFilter
+
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+
+        - id: first-service
+          uri: lb://PHILZ-FIRST-SERVICE
+          predicates:
+            - Path=/first-service/**
+          filters:
+            - AddRequestHeader=first-request, first-request-value
+            - AddResponseHeader=first-response, first-response-value
+            - CustomFilter
+
+        - id: second-service
+          uri: lb://PHILZ-SECOND-SERVICE
+          predicates:
+            - Path=/second-service/**
+          filters:
+            - AddRequestHeader=second-request, second-request-value
+            - AddResponseHeader=second-response, second-response-value
+            - CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: "Spring Cloud Gateway GlobalFilter"
+                preLogger: true
+                postLogger: true
