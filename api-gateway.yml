@@ -9,6 +9,8 @@ spring:
     username: guest
     password: guest
   profiles.include: route-and-filters
+  # config:
+    # import: classpath:api-gateway-route-and-filtersconfig
   devtools:
     livereload.enabled: true
     restart.enabled: true
