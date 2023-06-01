@@ -40,3 +40,5 @@ spring.cloud.gateway.routes:
       - RemoveRequestHeader=Cookie
       - RewritePath=/user-service/(?<segment>.*),/$\{segment}
       - AuthorizationHeaderFilter
+
+debug-constant-c: c

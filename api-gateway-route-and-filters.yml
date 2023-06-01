@@ -1,10 +1,13 @@
 spring:
-  profiles.include: 
-    - route-user-service
-    - route-etc
+  # profiles.include: 
+    # - api-gateway-route-user-service
+    # - api-gateway-route-etc
+  # config.import: classpath:api-gateway-route-user-service.yml, classpath:api-gateway-route-etc.yml
   cloud.gateway.default-filters:
     - name: GlobalFilter
       args:
         baseMessage: "Spring Cloud Gateway GlobalFilter"
         preLogger: true
         postLogger: true
+
+debug-constant-b: b

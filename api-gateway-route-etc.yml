@@ -31,3 +31,5 @@ spring.cloud.gateway.routes:
           baseMessage: "Spring Cloud Gateway GlobalFilter"
           preLogger: true
           postLogger: true
+
+debug-constant-d: d
