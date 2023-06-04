@@ -48,3 +48,6 @@ logging.level:
     type.descriptor.sql: trace
 
 management.endpoints.web.exposure.include: refresh, health, beans, busrefresh
+
+# order-service-url-format: "http://localhost:8000/order-service/%s/orders"
+order-service-url-format: "http://order-service/order-service/%s/orders"
